@@ -13,7 +13,9 @@ import { UserModule } from './user/user.module';
   imports: [
     GraphQLModule.forRoot<ApolloFederationDriverConfig>({
       driver: ApolloFederationDriver,
-      autoSchemaFile: true,
+      autoSchemaFile: {
+        federation: 2,
+      },
       path: 'graphql/users',
       plugins: [ApolloServerPluginInlineTraceDisabled()],
     }),
