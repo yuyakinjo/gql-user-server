@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { CreateUserInput } from './dto/create-user.input';
-import { UpdateUserInput } from './dto/update-user.input';
+import { CreateInput } from './dto/create.input';
+import { UpdateInput } from './dto/update.input';
 
 const users = [
   { id: 1, name: 'John Doe' },
@@ -11,7 +11,7 @@ const users = [
 export class UserService {
   #users = users;
 
-  create({ ...props }: CreateUserInput) {
+  create({ ...props }: CreateInput) {
     const ids = this.#users.map(({ id }) => id);
     const incremantalId = Math.max(...ids) + 1;
     const user = { id: incremantalId, ...props };
@@ -27,7 +27,7 @@ export class UserService {
     return this.#users.find((user) => user.id === id);
   }
 
-  update(id: number, updateUserInput: UpdateUserInput) {
+  update(id: number, updateUserInput: UpdateInput) {
     const [target] = this.#users
       .filter((user) => user.id === id)
       .map((user) => ({ ...user, ...updateUserInput }));
