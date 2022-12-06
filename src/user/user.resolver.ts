@@ -1,11 +1,4 @@
-import {
-  Args,
-  Int,
-  Mutation,
-  Query,
-  Resolver,
-  ResolveReference,
-} from '@nestjs/graphql';
+import { Args, Int, Mutation, Query, Resolver, ResolveReference } from '@nestjs/graphql'; // prettier-ignore
 import { CreateUserInput } from './dto/create.input';
 import { UpdateUserInput } from './dto/update.input';
 import { User } from './entities/user.entity';
