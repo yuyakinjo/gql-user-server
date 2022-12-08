@@ -36,7 +36,7 @@ export class UserService {
   }
 
   remove(id: number) {
-    const target = this.#users.filter((user) => user.id === id);
+    const target = this.#users.find((user) => user.id === id);
     this.#users = this.#users.filter((user) => user.id !== id);
     return target;
   }
