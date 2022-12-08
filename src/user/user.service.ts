@@ -28,16 +28,15 @@ export class UserService {
   }
 
   update(id: number, inputs: UpdateUserInput) {
-    const [target] = this.#users
-      .filter((user) => user.id === id)
-      .map((user) => ({ ...user, ...inputs }));
-    this.#users = this.#users.filter((user) => user.id !== id).concat(target);
-    return target;
+    const target = this.findOne(id);
+    const updated = { ...target, ...inputs };
+    this.#users = this.#users.filter((user) => user.id !== id).concat(updated);
+    return updated;
   }
 
   remove(id: number) {
-    const target = this.#users.find((user) => user.id === id);
+    const removed = this.findOne(id);
     this.#users = this.#users.filter((user) => user.id !== id);
-    return target;
+    return removed;
   }
 }
